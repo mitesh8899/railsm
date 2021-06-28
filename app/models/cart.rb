@@ -2,10 +2,7 @@ class Cart < ApplicationRecord
   attr_reader :items
   attr_reader :total_price
 
-  def initialize
-      @items = []
-      @total_price = 0.0
-  end
+ 
 
   def items
       @items
@@ -20,6 +17,11 @@ class Cart < ApplicationRecord
       @items << item
     end
       @total_price += item.unit_price
+  end
+
+  def empty!
+    @items = []
+    @total_price = 0.0
   end
   
 end
