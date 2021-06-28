@@ -1,0 +1,16 @@
+<table>
+  <% for product in @products %>
+    <tr>
+      <td><img src="<%= product.image_url %>"/></td>
+      <td width="450">
+        <h3><%=h product.title %></h3>
+        <small><%= product.description %></small>
+        <br/>
+        <strong>$<%= sprintf("%0.2f", product.price) %></strong>
+        <br/>
+      </td>
+    </tr>
+    <tr><td colspan="2"><hr/></td></tr>
+  <% end %>
+</table>
+<br>

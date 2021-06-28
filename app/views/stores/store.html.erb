@@ -1,0 +1,9 @@
+<% for product in @products %>
+  <div class="catalogentry">
+    <img src="<%= product.image_url %>"/>
+    <h3><%= h(product.title) %></h3>
+    <%= product.description %>
+    <span class="catalogprice"><%= sprintf("$%0.2f", product.price) %></span>
+  </div>
+  <div class="separator">&nbsp;</div>
+<% end %>

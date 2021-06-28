@@ -1,0 +1,29 @@
+<h1>Product Listing</h1>
+<table cellpadding="5" cellspacing="0">
+  <% odd_or_even = 0 for product in @products odd_or_even = 1 - odd_or_even %>
+    <tr valign="top" class="ListLine<%= odd_or_even %>">
+      <td>
+        <img width="60" height="70" src="<%= product.image_url %>"/>
+      </td>
+      <td width="60%">
+        <span class="ListTitle"><%= h(product.title) %></span><br />
+      </td>
+      <td align="right">
+        <%= product.date_available.strftime("%y-%m-%d") %><br/>
+        <strong>$<%= sprintf("%0.2f", product.price) %></strong>
+      </td>
+      <td class="ListActions">
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to 'New Product', new_product_path %>
+<br>
+<br/>
+<%= link_to 'add_to_cart', stores: @product %>
+
