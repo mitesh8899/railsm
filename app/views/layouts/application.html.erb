@@ -48,11 +48,12 @@
     </nav>    
       <div class="container">
         <div class="row">
-          <div class="col-2">
-            <%= link_to 'New Product', new_product_path %>
-
+          <div class="col-0">
+            <%= link_to 'New Product', new_product_path %><br>
+            <%= link_to 'display_cart', display_cart_path %><br>  
+            <%= link_to 'lists', list_admins_path %><br>
           </div>
-        <div class="col-10">
+        <div class="col-12">
           <%= yield %>
         </div>
       </div>

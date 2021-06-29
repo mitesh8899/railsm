@@ -17,6 +17,7 @@ class StoresController < ApplicationController
   def display_cart
     @cart = find_cart
     @items = @cart.items
+    redirect_to_index
   end
 
   def empty_cart
@@ -33,6 +34,29 @@ class StoresController < ApplicationController
       redirect_to_index("There ' s nothing in your cart!")
     else
       @order = Order.new
+    end
+  end
+  
+  def save_order
+    @cart = find_cart
+    @order = Order.new(params[:order])
+    @order.line_items << @cart.items
+    if @order.save
+      @cart.empty!
+      redirect_to_index( ' Thank you for your order. ' )
+    else
+      render(:action => ' checkout ' )
+    end
+  end
+
+  def display_cart
+    @cart = find_cart
+    @items = @cart.items
+    if @items.empty?
+      redirect_to_index("Your cart is currently empty")
+    end
+    if params[:context] == :checkout
+      render(:layout => false)
     end
   end
 

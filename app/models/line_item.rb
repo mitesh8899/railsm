@@ -1,5 +1,6 @@
 class LineItem < ApplicationRecord
     belongs_to :product
+    belongs_to :order
   
     def self.for_product(product) 
         item = self.new
